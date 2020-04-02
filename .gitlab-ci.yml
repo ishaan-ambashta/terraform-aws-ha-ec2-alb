@@ -1,0 +1,19 @@
+---
+#image: wata727/tflint
+image: 
+  name: wata727/tflint
+  entrypoint: [""]
+stages:
+  - lint
+  - test
+
+codelint:    
+  stage: lint
+  script: 
+    - tflint
+
+codetest:
+  stage: test
+  script:
+    - echo "will write test cases soon"
+...
