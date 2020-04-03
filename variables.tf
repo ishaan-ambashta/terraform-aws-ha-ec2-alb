@@ -1,3 +1,23 @@
+variable "route53_zone_id" {
+  type = string
+}
+variable "route53_name" {
+  type = string
+}
+variable "rout53_record_type" {
+  type = string
+}
+variable "alb_dns_name" {
+  type = string
+}
+variable "alb_zone_id" {
+  type = string
+}
+variable "route53_evaluate_target_health" {
+  type = string
+  default = true
+}
+
 /*-------------------------------------------------------*/
 variable "applicaton_name" {
   type = string
@@ -21,46 +41,46 @@ variable "vpc_id" {
   type = string
 }
 /*-------------------------------------------------------*/
-variable "lr_listener_arn" {
+variable "listener_arn" {
   type = string
 }
-variable "lr_priority" {
+variable "priority" {
   type = number
 }
-variable "lr_action_type" {
+variable "action_type" {
   type = string
   default = "forward"
 }
-variable "lr_listener_rule_condition" {
+variable "listener_rule_condition" {
   type = string
 }
-variable "lr_listener_rule_condition_values" {
+variable "listener_rule_condition_values" {
   type    = list(string)
 }
 /*-------------------------------------------------------*/
-variable "lt_disable_api_termination" {
+variable "disable_api_termination" {
   type = string
   default = true
 }
-variable "lt_ami_id" {
+variable "ami_id" {
   type = string
 }
-variable "lt_instance_type" {
+variable "instance_type" {
   type =  string
 }
-variable "lt_instance_key_name" {
+variable "instance_key_name" {
   type = string
 }
-variable "lt_security_groups" {
+variable "security_groups" {
   type = list
 }
-variable "lt_device_name" {
+variable "device_name" {
   type = string
 }
-variable "lt_volume_size" {
+variable "volume_size" {
   type = number
 }
-variable "lt_monitring_enabled" {
+variable "monitoring_enabled" {
   type = string
   default = true
 }

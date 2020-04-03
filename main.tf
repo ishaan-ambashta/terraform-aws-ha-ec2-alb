@@ -1,4 +1,16 @@
 /*-------------------------------------------------------*/
+resource "aws_route53_record" "record" {
+  zone_id                   = var.route53_zone_id
+  name                      = var.route53_name
+  type                      = var.rout53_record_type
+
+  alias {
+    name                    = var.alb_dns_name
+    zone_id                 = var.alb_zone_id
+    evaluate_target_health  = var.route53_evaluate_target_health
+  }
+}
+/*-------------------------------------------------------*/
 resource "aws_lb_target_group" "target_group" {
   name          = "${var.applicaton_name}-alb-tg"
   port          = var.applicaton_port
@@ -11,33 +23,33 @@ resource "aws_lb_target_group" "target_group" {
 }
 /*-------------------------------------------------------*/
 resource "aws_lb_listener_rule" "listner_rule" {
-  listener_arn        = var.lr_listener_arn
-  priority            = var.lr_priority
+  listener_arn        = var.listener_arn
+  priority            = var.priority
   action {
-    type              = var.lr_action_type
+    type              = var.action_type
     target_group_arn  = aws_lb_target_group.target_group.arn
   }
   condition {
-    field  = var.lr_listener_rule_condition
-    values = ["var.lr_listener_rule_condition_values"]
+    field  = var.listener_rule_condition
+    values = ["var.listener_rule_condition_values"]
   }
 }
 /*-------------------------------------------------------*/
 resource "aws_launch_template" "launch_template" {
   name                        = "${var.applicaton_name}_LT"
-  disable_api_termination     = var.lt_disable_api_termination
-  image_id                    = var.lt_ami_id
-  instance_type               = var.lt_instance_type
-  key_name                    = var.lt_instance_key_name
-  vpc_security_group_ids      = var.lt_security_groups
+  disable_api_termination     = var.disable_api_termination
+  image_id                    = var.ami_id
+  instance_type               = var.instance_type
+  key_name                    = var.instance_key_name
+  vpc_security_group_ids      = var.security_groups
   block_device_mappings {
-    device_name = var.lt_device_name
+    device_name = var.device_name
         ebs {
-          volume_size = var.lt_volume_size
+          volume_size = var.volume_size
     }
   }
   monitoring {
-    enabled = var.lt_monitring_enabled
+    enabled = var.monitoring_enabled
   }
   tag_specifications {
     resource_type = "instance"
