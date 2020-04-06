@@ -116,8 +116,7 @@ Check out these related projects.
 
 ### Contributors
 
-|  [![Sudipt Sharma][sudipt_avatar]][sudipt_homepage]<br/>[Sudipt Sharma][sudipt_homepage] 
-|---|---|---|
+[![Sudipt Sharma][sudipt_avatar]][sudipt_homepage]<br/>[Sudipt Sharma][sudipt_homepage] 
 
   [sudipt_homepage]: https://github.com/iamsudipt
   [sudipt_avatar]: https://img.cloudposse.com/150x150/https://github.com/iamsudipt.png
