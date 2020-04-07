@@ -6,18 +6,14 @@ variable "route53_name" {
 }
 variable "rout53_record_type" {
   type = string
+  default = "CNAME"
 }
 variable "alb_dns_name" {
-  type = string
+  type = list(string)
 }
-variable "alb_zone_id" {
-  type = string
+variable "ttl" {
+  type = number
 }
-variable "route53_evaluate_target_health" {
-  type = string
-  default = true
-}
-
 /*-------------------------------------------------------*/
 variable "applicaton_name" {
   type = string
@@ -76,6 +72,7 @@ variable "security_groups" {
 }
 variable "device_name" {
   type = string
+  default = "/dev/sda1"
 }
 variable "volume_size" {
   type = number
@@ -85,7 +82,7 @@ variable "monitoring_enabled" {
   default = true
 }
 /*-------------------------------------------------------*/
-variable "asg_availability_zones" {
+variable "instance_availability_zone" {
   type = list
 }
 variable "asg_min_size" {
@@ -120,11 +117,7 @@ variable "asg_default_cooldown" {
   type    = number
   default = 300
 }
-variable "asg_load_balancers" {
-  type    = list
-  default = []
-}
-variable "asg_vpc_zone_identifier" {
+variable "instance_subnets" {
   type = list
 }
 variable "asg_termination_policies" {
@@ -135,7 +128,7 @@ variable "asg_suspended_processes" {
   type    = list(string)
   default = []
 }
-variable "asg_launch_template_version" {
+variable "launch_template_version" {
   type    = string
   default = "$Latest"
 }
