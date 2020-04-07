@@ -8,7 +8,7 @@ variable "rout53_record_type" {
   type = string
   default = "CNAME"
 }
-variable "alb_dns_name" {
+variable "alb_dns_cname" {
   type = list(string)
 }
 variable "ttl" {

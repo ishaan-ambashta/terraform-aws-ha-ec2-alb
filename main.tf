@@ -3,7 +3,7 @@ resource "aws_route53_record" "record" {
   zone_id                   = var.route53_zone_id
   name                      = var.route53_name
   type                      = var.rout53_record_type
-  records                   = var.alb_dns_name
+  records                   = var.alb_dns_cname
   ttl                       = var.ttl
 }
 /*-------------------------------------------------------*/
