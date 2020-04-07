@@ -117,10 +117,6 @@ variable "asg_default_cooldown" {
   type    = number
   default = 300
 }
-variable "asg_load_balancers" {
-  type    = list
-  default = []
-}
 variable "instance_subnets" {
   type = list
 }
