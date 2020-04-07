@@ -2,7 +2,7 @@
 
 [![Opstree Solutions][opstree_avatar]][opstree_homepage]<br/>[Opstree Solutions][opstree_homepage] 
 
-  [opstree_homepage]: https://github.com/iamsudipt
+  [opstree_homepage]: https://opstree.github.io/
   [opstree_avatar]: https://img.cloudposse.com/150x150/https://github.com/opstree.png
 
 - This terraform module will create a Highly available setup of an EC2 instance with quick disater recovery.
