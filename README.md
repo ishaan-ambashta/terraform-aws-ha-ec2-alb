@@ -23,7 +23,7 @@ module "ha_ec2_alb" {
 
   route53_zone_id    = "Z2SMIZHC4PCJX4"
   route53_name       = "nexus.uat.xyz.com"
-  alb_dns_name       = ["aws_lb.test.dns_name"]
+  alb_dns_cname       = ["aws_lb.test.dns_name"]
   ttl                = "60"
 
   listener_arn                   = aws_lb_listener.test_lb_listner.arn
@@ -71,7 +71,7 @@ output "route53_name" {
 | route53_zone_id | The ID of the hosted zone to contain this record. | string | null | yes |
 | route53_name | The name of the record. | string | null | yes |
 | rout53_record_type | The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV` and `TXT`. | string | `CNAME` | yes |
-| alb_dns_name | A string list of records.  | list(string) | null | yes |
+| alb_dns_cname | A string list of records.  | list(string) | null | yes |
 | ttl | The TTL of the record. | string | `false` | no |
 | applicaton_name | With this name launch template and Autoscaling group will be created  | string | null | yes |
 | applicaton_port | Port on which your application runs  | string | null | yes |
@@ -115,6 +115,10 @@ output "route53_name" {
 | target_group_arn | ARN of the target group |
 | route53_name | Name of the record created |
 
+## Future proposed changes
+
+- Add capability to setup without ALB & then health check would be EC2 instance
+ 
 ## Related Projects
 
 Check out these related projects.
