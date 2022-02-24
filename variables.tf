@@ -82,9 +82,6 @@ variable "monitoring_enabled" {
   default = true
 }
 /*-------------------------------------------------------*/
-# variable "instance_availability_zone" {
-#   type = list
-# }
 variable "asg_min_size" {
   type    = number
   default = "1"

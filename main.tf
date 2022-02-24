@@ -58,7 +58,6 @@ resource "aws_launch_template" "launch_template" {
 } 
 /*-------------------------------------------------------*/
 resource "aws_autoscaling_group" "autoscaling_group" {
-  #availability_zones        = var.instance_availability_zone
   name                      = "${var.applicaton_name}_asg_${aws_launch_template.launch_template.name}"
   min_size                  = var.asg_min_size
   max_size                  = var.asg_max_size
