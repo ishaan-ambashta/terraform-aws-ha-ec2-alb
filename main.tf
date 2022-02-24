@@ -26,8 +26,9 @@ resource "aws_lb_listener_rule" "listner_rule" {
     target_group_arn  = aws_lb_target_group.target_group.arn
   }
   condition {
-    field  = var.listener_rule_condition
-    values = var.listener_rule_condition_values
+    host_header {
+      values = var.listener_rule_condition_values
+    }
   }
 }
 /*-------------------------------------------------------*/
@@ -57,7 +58,7 @@ resource "aws_launch_template" "launch_template" {
 } 
 /*-------------------------------------------------------*/
 resource "aws_autoscaling_group" "autoscaling_group" {
-  availability_zones        = var.instance_availability_zone
+  #availability_zones        = var.instance_availability_zone
   name                      = "${var.applicaton_name}_asg_${aws_launch_template.launch_template.name}"
   min_size                  = var.asg_min_size
   max_size                  = var.asg_max_size
