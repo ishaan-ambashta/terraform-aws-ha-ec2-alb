@@ -33,7 +33,7 @@ resource "aws_lb_listener_rule" "listner_rule" {
 }
 /*-------------------------------------------------------*/
 resource "aws_launch_template" "launch_template" {
-  name                        = "${var.applicaton_name}_LT"
+  name                        = var.applicaton_name
   disable_api_termination     = var.disable_api_termination
   image_id                    = var.ami_id
   instance_type               = var.instance_type
@@ -58,7 +58,7 @@ resource "aws_launch_template" "launch_template" {
 } 
 /*-------------------------------------------------------*/
 resource "aws_autoscaling_group" "autoscaling_group" {
-  name                      = "${var.applicaton_name}_asg_${aws_launch_template.launch_template.name}"
+  name                      = "${var.applicaton_name}-asg"
   min_size                  = var.asg_min_size
   max_size                  = var.asg_max_size
   desired_capacity          = var.asg_desired_size
