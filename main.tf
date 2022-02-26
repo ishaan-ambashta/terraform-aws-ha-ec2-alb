@@ -33,7 +33,7 @@ resource "aws_lb_listener_rule" "listner_rule" {
 }
 /*-------------------------------------------------------*/
 resource "aws_launch_template" "launch_template" {
-  name                    = var.applicaton_name
+  name                    = "${var.env_name}-${var.applicaton_name}-lt"
   disable_api_termination = var.disable_api_termination
   image_id                = var.ami_id
   instance_type           = var.instance_type
