@@ -1,29 +1,29 @@
 /*-------------------------------------------------------*/
 resource "aws_route53_record" "record" {
-  zone_id                   = var.route53_zone_id
-  name                      = var.route53_name
-  type                      = var.rout53_record_type
-  records                   = var.alb_dns_cname
-  ttl                       = var.ttl
+  zone_id = var.route53_zone_id
+  name    = var.route53_name
+  type    = var.rout53_record_type
+  records = var.alb_dns_cname
+  ttl     = var.ttl
 }
 /*-------------------------------------------------------*/
 resource "aws_lb_target_group" "target_group" {
-  name          = "${var.applicaton_name}-alb-tg"
-  port          = var.applicaton_port
-  target_type   = var.tg_target_type
-  protocol      = var.tg_protocol
-  vpc_id        = var.vpc_id
+  name        = "${var.env_name}-${var.applicaton_name}-alb-tg"
+  port        = var.applicaton_port
+  target_type = var.tg_target_type
+  protocol    = var.tg_protocol
+  vpc_id      = var.vpc_id
   health_check {
     path = var.applicaton_health_check_target
   }
 }
 /*-------------------------------------------------------*/
 resource "aws_lb_listener_rule" "listner_rule" {
-  listener_arn        = var.listener_arn
-  priority            = var.priority
+  listener_arn = var.listener_arn
+  priority     = var.priority
   action {
-    type              = var.action_type
-    target_group_arn  = aws_lb_target_group.target_group.arn
+    type             = var.action_type
+    target_group_arn = aws_lb_target_group.target_group.arn
   }
   condition {
     host_header {
@@ -33,16 +33,16 @@ resource "aws_lb_listener_rule" "listner_rule" {
 }
 /*-------------------------------------------------------*/
 resource "aws_launch_template" "launch_template" {
-  name                        = var.applicaton_name
-  disable_api_termination     = var.disable_api_termination
-  image_id                    = var.ami_id
-  instance_type               = var.instance_type
-  key_name                    = var.instance_key_name
-  vpc_security_group_ids      = var.security_groups
+  name                    = var.applicaton_name
+  disable_api_termination = var.disable_api_termination
+  image_id                = var.ami_id
+  instance_type           = var.instance_type
+  key_name                = var.instance_key_name
+  vpc_security_group_ids  = var.security_groups
   block_device_mappings {
     device_name = var.device_name
-        ebs {
-          volume_size = var.volume_size
+    ebs {
+      volume_size = var.volume_size
     }
   }
   monitoring {
@@ -52,13 +52,13 @@ resource "aws_launch_template" "launch_template" {
     resource_type = "instance"
 
     tags = {
-      Name = "${var.applicaton_name}_LT"
+      Name = "${var.env_name}-${var.applicaton_name}"
     }
   }
-} 
+}
 /*-------------------------------------------------------*/
 resource "aws_autoscaling_group" "autoscaling_group" {
-  name                      = "${var.applicaton_name}-asg"
+  name                      = "${var.env_name}-${var.applicaton_name}-asg"
   min_size                  = var.asg_min_size
   max_size                  = var.asg_max_size
   desired_capacity          = var.asg_desired_size
