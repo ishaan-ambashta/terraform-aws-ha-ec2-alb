@@ -51,12 +51,7 @@ resource "aws_launch_template" "launch_template" {
   tag_specifications {
     resource_type = "instance"
 
-    tags = merge(
-    {
-      Name = "${var.env_name}-${var.applicaton_name}"
-    },
-    var.tags,
-  )
+    tags = var.tags
   }
 }
 /*-------------------------------------------------------*/
