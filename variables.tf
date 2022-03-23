@@ -81,6 +81,12 @@ variable "monitoring_enabled" {
   type = string
   default = true
 }
+
+variable "tags" {
+  type = map(string)
+  description = "Tags for launch template"
+}
+
 /*-------------------------------------------------------*/
 variable "instance_availability_zone" {
   type = list
