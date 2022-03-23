@@ -14,3 +14,6 @@ output "route53_name" {
   value = aws_route53_record.record.name
 }
 
+output "asg_name" {
+  value = aws_autoscaling_group.autoscaling_group.name
+}
