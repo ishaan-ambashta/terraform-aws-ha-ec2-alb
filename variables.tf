@@ -86,6 +86,11 @@ variable "monitoring_enabled" {
   type    = string
   default = true
 }
+
+variable "tags" {
+  type = map(string)
+  description = "tags for launch template"
+}
 /*-------------------------------------------------------*/
 variable "asg_min_size" {
   type    = number
