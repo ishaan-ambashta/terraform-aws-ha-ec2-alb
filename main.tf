@@ -39,6 +39,12 @@ resource "aws_launch_template" "launch_template" {
   instance_type               = var.instance_type
   key_name                    = var.instance_key_name
   vpc_security_group_ids      = var.security_groups
+  dynamic iam_instance_profile {
+    for_each = var.lt_iam_arn
+    content {
+        arn = var.lt_iam_arn
+      }
+  }
   block_device_mappings {
     device_name = var.device_name
         ebs {

@@ -81,6 +81,11 @@ variable "monitoring_enabled" {
   type = string
   default = true
 }
+variable "lt_iam_arn" {
+  type = string
+  description = "The Amazon Resource Name (ARN) of the instance profile for launch template"
+  default = ""
+}
 /*-------------------------------------------------------*/
 variable "asg_min_size" {
   type    = number
