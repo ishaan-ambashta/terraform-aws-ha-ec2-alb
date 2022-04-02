@@ -5,7 +5,7 @@ variable "route53_name" {
   type = string
 }
 variable "rout53_record_type" {
-  type = string
+  type    = string
   default = "CNAME"
 }
 variable "alb_dns_cname" {
@@ -15,6 +15,11 @@ variable "ttl" {
   type = number
 }
 /*-------------------------------------------------------*/
+
+variable "env_name" {
+  type = string
+}
+
 variable "applicaton_name" {
   type = string
 }
@@ -26,11 +31,11 @@ variable "applicaton_health_check_target" {
 }
 /*-------------------------------------------------------*/
 variable "tg_target_type" {
-  type = string
+  type    = string
   default = "instance"
 }
 variable "tg_protocol" {
-  type = string
+  type    = string
   default = "HTTP"
 }
 variable "vpc_id" {
@@ -44,47 +49,47 @@ variable "priority" {
   type = number
 }
 variable "action_type" {
-  type = string
+  type    = string
   default = "forward"
 }
 variable "listener_rule_condition" {
   type = string
 }
 variable "listener_rule_condition_values" {
-  type    = list(string)
+  type = list(string)
 }
 /*-------------------------------------------------------*/
 variable "disable_api_termination" {
-  type = string
+  type    = string
   default = true
 }
 variable "ami_id" {
   type = string
 }
 variable "instance_type" {
-  type =  string
+  type = string
 }
 variable "instance_key_name" {
   type = string
 }
 variable "security_groups" {
-  type = list
+  type = list(any)
 }
 variable "device_name" {
-  type = string
+  type    = string
   default = "/dev/sda1"
 }
 variable "volume_size" {
   type = number
 }
 variable "monitoring_enabled" {
-  type = string
+  type    = bool
   default = true
 }
 variable "lt_iam_arn" {
-  type = string
+  type        = string
   description = "The Amazon Resource Name (ARN) of the instance profile for launch template"
-  default = ""
+  default     = ""
 }
 /*-------------------------------------------------------*/
 variable "asg_min_size" {
@@ -112,7 +117,7 @@ variable "asg_health_check_type" {
   default = "ELB"
 }
 variable "asg_force_delete" {
-  type = string
+  type    = string
   default = false
 }
 variable "asg_default_cooldown" {
@@ -120,7 +125,7 @@ variable "asg_default_cooldown" {
   default = 300
 }
 variable "instance_subnets" {
-  type = list
+  type = list(any)
 }
 variable "asg_termination_policies" {
   type    = list(string)
