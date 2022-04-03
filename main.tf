@@ -42,7 +42,7 @@ resource "aws_launch_template" "launch_template" {
   dynamic "iam_instance_profile" {
     for_each = var.lt_iam_arn
     content {
-      arn = var.lt_iam_arn
+      arn = iam_instance_profile.value.arn
     }
   }
   block_device_mappings {

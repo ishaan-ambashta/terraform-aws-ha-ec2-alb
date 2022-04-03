@@ -87,9 +87,11 @@ variable "monitoring_enabled" {
   default = true
 }
 variable "lt_iam_arn" {
-  type        = string
-  description = "The Amazon Resource Name (ARN) of the instance profile for launch template"
-  default     = ""
+  description = "(Optional) The Amazon Resource Name (ARN) of the instance profile for launch template"
+  type = list(object({
+      arn = string
+  }))
+  default = []
 }
 /*-------------------------------------------------------*/
 variable "asg_min_size" {
