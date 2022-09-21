@@ -141,3 +141,11 @@ variable "launch_template_version" {
   type    = string
   default = "$Latest"
 }
+
+variable "network_interfaces" {
+  type = list(object({
+      associate_public_ip_address = bool
+      ipv6_address_count = number
+  }))
+  default = []
+}
