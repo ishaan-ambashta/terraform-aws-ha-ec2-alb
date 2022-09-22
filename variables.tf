@@ -146,6 +146,7 @@ variable "network_interfaces" {
   type = list(object({
       associate_public_ip_address = bool
       ipv6_address_count = number
+      ipv4_address_count = number
       security_groups = list(any)
   }))
   default = []

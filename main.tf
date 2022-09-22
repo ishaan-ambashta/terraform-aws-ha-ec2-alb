@@ -40,11 +40,20 @@ resource "aws_launch_template" "launch_template" {
   key_name                = var.instance_key_name
   # vpc_security_group_ids  = var.security_groups
 
+  ## Note ##
+
+  # The network_interface block allows you to set the security
+  # group for the interface (security groups are scoped by the
+  # ENI) so if you define the network_interface block then you
+  # are overriding the default ENI and so can  not specify the
+  # security groups at the instance level in launch temp.
+
   dynamic network_interfaces {
     for_each = var.network_interfaces
     content {
       associate_public_ip_address    = network_interfaces.value.associate_public_ip_address
       ipv6_address_count = network_interfaces.value.ipv6_address_count
+      ipv4_address_count = network_interfaces.value.ipv4_address_count
       security_groups  = network_interfaces.value.security_groups
     }
   }
