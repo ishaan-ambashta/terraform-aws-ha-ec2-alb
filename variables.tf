@@ -148,7 +148,6 @@ variable "network_interfaces" {
       ipv6_address_count = number
       ipv4_address_count = number
       security_groups = list(any)
-      private_ips_count = number
   }))
   default = []
 }

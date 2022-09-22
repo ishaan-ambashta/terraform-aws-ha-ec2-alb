@@ -54,7 +54,6 @@ resource "aws_launch_template" "launch_template" {
       associate_public_ip_address    = network_interfaces.value.associate_public_ip_address
       ipv6_address_count = network_interfaces.value.ipv6_address_count
       ipv4_address_count = network_interfaces.value.ipv4_address_count
-      private_ips_count = network_interfaces.value.private_ips_count
       security_groups  = network_interfaces.value.security_groups
     }
   }
