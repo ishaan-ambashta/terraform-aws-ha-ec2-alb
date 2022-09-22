@@ -72,9 +72,9 @@ variable "instance_type" {
 variable "instance_key_name" {
   type = string
 }
-variable "security_groups" {
-  type = list(any)
-}
+# variable "security_groups" {
+#   type = list(any)
+# }
 variable "device_name" {
   type    = string
   default = "/dev/sda1"
@@ -146,6 +146,7 @@ variable "network_interfaces" {
   type = list(object({
       associate_public_ip_address = bool
       ipv6_address_count = number
+      security_groups = list(any)
   }))
   default = []
 }
