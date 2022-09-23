@@ -142,12 +142,24 @@ variable "launch_template_version" {
   default = "$Latest"
 }
 
-variable "network_interfaces" {
-  type = list(object({
-      associate_public_ip_address = bool
-      ipv6_address_count = number
-      ipv4_address_count = number
-      security_groups = list(any)
-  }))
-  default = []
+variable "security_groups" {
+  type = list(any)
 }
+
+variable "ipv6_address_count" {
+  type = number
+}
+
+variable "associate_public_ip_address" {
+  type = bool
+}
+
+# variable "network_interfaces" {
+#   type = list(object({
+#       associate_public_ip_address = bool
+#       ipv6_address_count = number
+#       ipv4_address_count = number
+#       security_groups = list(any)
+#   }))
+#   default = []
+# }
