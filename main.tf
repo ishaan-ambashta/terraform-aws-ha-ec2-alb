@@ -48,20 +48,9 @@ resource "aws_launch_template" "launch_template" {
   # are overriding the default ENI and so can  not specify the
   # security groups at the instance level in launch temp.
 
-  # dynamic network_interfaces {
-  #   for_each = var.network_interfaces
-  #   content {
-  #     associate_public_ip_address    = network_interfaces.value.associate_public_ip_address
-  #     ipv6_address_count = network_interfaces.value.ipv6_address_count
-  #     ipv4_address_count = network_interfaces.value.ipv4_address_count
-  #     security_groups  = network_interfaces.value.security_groups
-  #   }
-  # }
-
   network_interfaces {
     associate_public_ip_address    = var.associate_public_ip_address
     ipv6_address_count = var.ipv6_address_count
-    # ipv4_address_count = network_interfaces.value.ipv4_address_count
     security_groups  = var.security_groups
     
   }
