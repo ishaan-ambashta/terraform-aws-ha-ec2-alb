@@ -39,7 +39,6 @@ resource "aws_launch_template" "launch_template" {
   instance_type           = var.instance_type
   key_name                = var.instance_key_name
   # vpc_security_group_ids  = var.security_groups
-  security_groups  = var.security_groups
 
   ## Note ##
 
