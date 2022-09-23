@@ -154,10 +154,10 @@ variable "associate_public_ip_address" {
   type = bool
 }
 
-variable "delete_on_termination_ENI" {
-  type = bool
-  default = false
-}
+# variable "delete_on_termination_ENI" {
+#   type = bool
+#   default = false
+# }
 
 # variable "network_interfaces" {
 #   type = list(object({
