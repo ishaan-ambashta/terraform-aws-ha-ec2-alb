@@ -52,7 +52,6 @@ resource "aws_launch_template" "launch_template" {
     associate_public_ip_address    = var.associate_public_ip_address
     ipv6_address_count = var.ipv6_address_count
     security_groups  = var.security_groups
-    # delete_on_termination = var.delete_on_termination_ENI
   }
   
   dynamic "iam_instance_profile" {
