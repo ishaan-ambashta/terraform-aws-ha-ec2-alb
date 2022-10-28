@@ -82,6 +82,9 @@ variable "device_name" {
 variable "volume_size" {
   type = number
 }
+variable "volume_type" {
+  type = string
+}
 variable "monitoring_enabled" {
   type    = bool
   default = true
