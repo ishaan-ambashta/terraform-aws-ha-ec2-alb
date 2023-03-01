@@ -93,6 +93,7 @@ resource "aws_autoscaling_group" "autoscaling_group" {
   vpc_zone_identifier       = var.instance_subnets
   termination_policies      = var.asg_termination_policies
   suspended_processes       = var.asg_suspended_processes
+  tags                      = var.asg_tags
 
   launch_template {
     id      = aws_launch_template.launch_template.id

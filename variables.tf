@@ -163,3 +163,8 @@ variable "associate_public_ip_address" {
 #   }))
 #   default = []
 # }
+
+variable "asg_tags" {
+  type        = list(map(string))
+  description = "The tag associated with the auto scaling group"
+}
