@@ -131,7 +131,6 @@ variable "instance_subnets" {
 }
 variable "asg_termination_policies" {
   type    = list(string)
-  default = ["Default"]
 }
 variable "asg_suspended_processes" {
   type    = list(string)
